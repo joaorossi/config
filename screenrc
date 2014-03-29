@@ -1,0 +1,57 @@
+autodetach on
+startup_message off
+vbell off
+altscreen on
+shell -$SHELL
+msgwait 3
+defutf8 on
+shelltitle ''
+
+# Let you scroll up and down using mouse wheel
+#termcapinfo xterm|xterms|xs ti@:te=\E[2J
+termcapinfo xterm ti@:te@
+
+# control + left; previous screen window
+bindkey ^[[1;5D prev
+# control + right; next screen window
+bindkey ^[[1;5C next
+# control + up; previous split screen
+bindkey ^[[1;5A focus prev
+# control + down; next split screen
+bindkey ^[[1;5B focus next
+
+# F1 kill tab
+bindkey -k k1 kill
+# F2 write paste buffer to file
+bindkey -k k2 writebuf 
+# F3 Split horizontally
+bindkey -k k3 split
+# F4 Split vertically
+bindkey -k k4 split -v
+# F5 Remove single split
+bindkey -k k5 remove
+# F6 Remove all splits
+bindkey -k k6 only
+# F7 Urlview
+bindkey -k k7 eval "hardcopy_append off" "hardcopy -h $HOME/.screen-urlview" "screen urlview $HOME/.screen-urlview"
+# F8 New tab
+bindkey -k k8 screen
+# F9 resize -1 line
+bindkey -k k9 resize -1
+# F10 resize +1 line
+bindkey -k k; resize +1
+
+bind ^M at "#" stuff "
+
+# ~/.screenwins
+# 
+# Startup window example
+# screen -t irssi
+# at "irssi#" stuff "irssi -n nick^M"
+#
+source ~/.screenwins
+
+hardstatus alwayslastline '%{= kG}[%{G}%H%{g}][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{W}%m-%d %c%{g}]'
+#hardstatus string '%{= kG}[%{G}%H%{g}][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{W}%m-%d %c%{g}]'  bkp
+#hardstatus string '%{= kG}%-Lw%{= kW}%50> %n%f* %t%{= kG}%+Lw%< %{= kG}%-=%c:%s%{-}'
+

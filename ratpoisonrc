@@ -1,0 +1,22 @@
+exec /usr/bin/vmware-user
+exec /usr/share/ratpoison/rpws init 6 -k
+#exec sloppy # Buggy!!! :(
+
+set winname class
+defborder 0
+defpadding 0 0 0 0
+defbarpadding 0 0
+
+set font Mono-12
+
+# General binds
+#escape C-x
+escape F13
+
+# Alt-tab and Alt-shift-tab
+definekey top M-Tab next
+definekey top M-ISO_Left_Tab prev
+
+# Environment specific binds
+source .ratpoisonkeys
+

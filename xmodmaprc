@@ -1,0 +1,5 @@
+! Use xmodmap -pke to list current mapping keycodes
+remove lock = Caps_Lock
+keycode 66 = F13 
+add lock = Scroll_Lock
+
